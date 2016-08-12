@@ -1,0 +1,31 @@
+extends ./common/layout.pug
+
+block title
+  title Trans Mental Health Survey
+
+block content
+  div#container
+    div
+      h1 Pledge to Help Spread the Word about the Upcoming Trans Mental Health Survey
+      p.
+        Transgender people face incredible obstacles in many aspects of life, chief
+        among them is accessing affordable, affirming, and competent healthcare.
+        The National LGBTQ Task Force and Trans Lifeline are joining forces to help
+        identify the unique barriers that transgender people face in accessing mental
+        health care by conducting the most comprehensive survey of mental health in
+        the transgender community. The survey’s ultimate goal is to collect data that
+        informs mental health practitioners so that they can develop policies that
+        improve support systems for this vulnerable population.
+      a(href='https://medium.com/@Translifeline/announcing-the-first-ever-transgender-mental-health-survey-969010f9c46a#.m7s994msl') Learn more about the survey or share the announcement here.
+    div
+      img(src='/images/coming-soon.png')
+    div
+      h2 Stay Connected!
+      form(action='/subscribe' method='post')
+        label(for='email' required) Email
+        input#email(type='text').full-width
+        label(for='first') First Name
+        input#first(type='text').full-width
+        label(for='last') Last Name
+        input#last(type='text').full-width
+        input#submit(type='submit' value='Subscribe')

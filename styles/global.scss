@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "node_modules/node-normalize-scss/_normalize.scss";
+
+@import "_variables.scss";
+@import "_imports.scss";
+
+body {
+  font-family: "Raleway";
+  background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color;
+}
+
+a {
+  color: $secondary-color;
+}
+
+a:hover {
+  color: $darker-primary-color;
+}
+
+.full-width {
+  width: 100%;
+}

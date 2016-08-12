@@ -1,0 +1,87 @@
+@import "_variables.scss";
+@import "node_modules/susy/sass/susy";
+
+header {
+  height: $header-height;
+  padding-top: 5px;
+  background-color: $background-color;
+  box-shadow: 0 0 3px black;
+  margin-bottom: $vertical-spacer;
+
+  .logo {
+    display: block;
+    float: left;
+    img {
+      height: 125px;
+      margin: 0 $horizontal-spacer;
+    }
+  }
+
+  .fa {
+    margin: 10px;
+    color: $background-color;
+  }
+
+  .fa-bars {
+    font-size: 30px;
+    margin-right: $horizontal-spacer;
+  }
+
+  #menu-button {
+    color: $primary-color;
+  }
+
+  nav.expanded {
+    right: 0px;
+  }
+
+  nav {
+    position: fixed;
+    width: $menu-width;
+    min-height: 100vh;
+    margin-bottom: 0;
+    margin-top: -5px;
+    padding-top: 5px;
+    right: -1 * $menu-width;
+    transition: right 1s ease-in-out;
+    z-index: 2;
+    // Color scheme is inverse of that of the rest of the page.
+    background-color: $darker-primary-color;
+    color: $background-color;
+  }
+
+  .menu {
+    list-style: none;
+    padding-left: 0;
+    padding-top: $header-height;
+    margin: 0;
+    font-size: 1.4em;
+
+    > li {
+      margin: $horizontal-spacer;
+      font-weight: bold;
+      a, span {
+        text-decoration: none;
+        cursor: pointer;
+        color: $background-color;
+      }
+    }
+
+    .submenu {
+      list-style: none;
+      padding: 0;
+      transition: max-height 1s ease-in-out;
+      max-height: 500px;
+      overflow: hidden;
+
+      > li {
+        margin-left: $horizontal-spacer;
+        margin-top: $horizontal-spacer/2;
+      }
+    }
+
+    .submenu-collapsed {
+      max-height: 0px;
+    }
+  }
+}
