@@ -28,11 +28,10 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
   if (err) {
     console.log(error);
   } else {
-    app.set('database', db);
+    // Initialize controllers.
+    controllers(app, db);
   }
 });
-// Initialize controllers.
-controllers(app);
 
 // Start the server.
 const port = process.env.PORT || 3000;
