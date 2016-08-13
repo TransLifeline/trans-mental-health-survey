@@ -3,6 +3,7 @@
 const express = require('express');
 const favicon = require('serve-favicon');
 const controllers = require('./controllers');
+const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -20,8 +21,16 @@ app.set('view engine', 'pug');
 // Serve static files from /public.
 app.use(express.static(__dirname + '/public'));
 // Initialize body parser.
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Initialize database.
+MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+  if (err) {
+    console.log(error);
+  } else {
+    app.set('database', db);
+  }
+});
 // Initialize controllers.
 controllers(app);
 
