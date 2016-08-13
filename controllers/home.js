@@ -69,7 +69,42 @@ function sendEmail(validationUrl, email) {
   return new Promise(function(resolve, reject) {
     // Only use our Mailgun quota in production.
     if (process.env.NODE_ENV === 'production') {
-      resolve(validationUrl);
+      var transporter = nodemailer.createTransport( {
+        service:  'Mailgun',
+        auth: {
+         user: process.env.MAILGUN_SMTP_LOGIN,
+         pass: process.env.MAILGUN_SMTP_PASSWORD
+        }
+      });
+
+      var mailOpts = {
+        from: 'contact@transmentalhealthsurvey.org',
+        to: email,
+        subject: 'Trans Mental Health Survey',
+        text : `
+                Hi,
+                Thank you for showing your interest in the Trans Mental Health Survey.
+                To stay connected, please verify your email by clicking on the following link: ${validationUrl}
+                Thank you!
+                The National LGBTQ Taskforce & Trans Lifeline.`
+        html : `
+               <p>Hi,</p>
+               <p>
+                  Thank you showing your interest in the Trans Mental Health Survey.
+                  To stay connected, please verify your email by click on the following link:
+               </p>
+               <a href="${validationUrl}"> ${validationUrl} </a>
+               <p>Thank you!</p>
+               <p>The National LGBTQ Taskforce & Trans Lifeline`
+      };
+
+      transporter.sendMail(mailOpts, function (err, res) {
+        if (err) {
+         reject(err);
+        } else {
+         resolve(res);
+        }
+      });
     } else {
       // Do not use Mailgun in dev.
       console.log('Validation link: ' + validationUrl);
