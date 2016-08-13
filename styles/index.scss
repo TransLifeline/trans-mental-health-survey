@@ -19,10 +19,6 @@ input {
   margin-bottom: $vertical-spacer;
 }
 
-a {
-  font-size: 1.5em;
-}
-
 #container {
   @include layout(6);
 
