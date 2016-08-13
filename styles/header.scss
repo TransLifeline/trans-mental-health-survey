@@ -9,10 +9,9 @@ header {
   margin-bottom: $vertical-spacer;
 
   .logo {
-    display: block;
-    float: left;
+    display: inline-block;;
     img {
-      height: 125px;
+      height: $header-height;
       margin: 0 $horizontal-spacer;
     }
   }
