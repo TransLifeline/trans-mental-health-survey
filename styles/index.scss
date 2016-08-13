@@ -1,6 +1,6 @@
 @import "_variables.scss";
 
-p, label, input {
+p, label {
   font-size: 1.5em;
   color: $primary-color;
 }
@@ -12,7 +12,10 @@ label, input {
 label {
   margin-bottom: 5px;
 }
+
 input {
+  color: $background-color;
+  font-size: 1.5em;
   margin-bottom: $vertical-spacer;
 }
 
@@ -38,10 +41,12 @@ h2 {
 }
 
 #submit {
+  font-size: 1.5em;
   background-color: $secondary-color;
   padding:5px 15px;
   border:0 none;
   cursor:pointer;
   -webkit-border-radius: 5px;
-  border-radius: 5px; 
+  border-radius: 5px;
+  margin-bottom: 2*$vertical-spacer;
 }
