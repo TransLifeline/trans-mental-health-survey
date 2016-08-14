@@ -69,46 +69,26 @@ function sendEmail(validationUrl, email) {
   return new Promise(function(resolve, reject) {
     // Only use our Mailgun quota in production.
     if (process.env.NODE_ENV === 'production') {
-      var transporter = nodemailer.createTransport( {
-        service:  'Mailgun',
-        auth: {
-         user: process.env.MAILGUN_SMTP_LOGIN,
-         pass: process.env.MAILGUN_SMTP_PASSWORD
-        }
-      });
-
-      var mailOpts = {
-        from: 'contact@transmentalhealthsurvey.org',
-        to: email,
-        subject: 'Trans Mental Health Survey',
-        text : `
-                Hi,
-                Thank you for showing your interest in the Trans Mental Health Survey.
-                To stay connected, please verify your email by clicking on the following link: ${validationUrl}
-                Thank you!
-                The National LGBTQ Taskforce & Trans Lifeline.`
-        html : `
-               <p>Hi,</p>
-               <p>
-                  Thank you showing your interest in the Trans Mental Health Survey.
-                  To stay connected, please verify your email by click on the following link:
-               </p>
-               <a href="${validationUrl}"> ${validationUrl} </a>
-               <p>Thank you!</p>
-               <p>The National LGBTQ Taskforce & Trans Lifeline`
-      };
-
-      transporter.sendMail(mailOpts, function (err, res) {
-        if (err) {
-         reject(err);
-        } else {
-         resolve(res);
-        }
+      var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+      sendgrid.send({
+        to:       email,
+        from:     'contact@transmentalhealthsurvey.org',
+        subject:  'Trans Mental Health Survey',
+        html: `Hi!<br/>Thank you for your interest in the Trans Mental Health Survey!
+          Please click on the following link to verify your email account so we can
+          keep in touch with you about the upcoming survey.<br/>
+          <a href=${validationUrl}>${validationUrl}</a>
+          <br/>Thank you!<br/> The National LGBTQ Taskforce & Trans Lifeline.
+        `
+      }, function(err, json) {
+        if (err) { return console.error(err); }
+        console.log(json);
+        resolve();
       });
     } else {
       // Do not use Mailgun in dev.
       console.log('Validation link: ' + validationUrl);
-      resolve(validationUrl);
+      resolve();
     }
   });
 }
