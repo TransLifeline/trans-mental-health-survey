@@ -2,7 +2,6 @@
 
 const menu = require('./common/menu');
 const randtoken = require('rand-token');
-var nodemailer = require('nodemailer');
 
 /* A controller for the home page. */
 function controller(app, db) {
