@@ -73,11 +73,12 @@ function sendEmail(validationUrl, email) {
         to:       email,
         from:     'contact@transmentalhealthsurvey.org',
         subject:  'Trans Mental Health Survey',
-        html: `Hi!<br/>Thank you for your interest in the Trans Mental Health Survey!
+        html: `Hi!<br/><br/>
+          Thank you for your interest in the Trans Mental Health Survey!
           Please click on the following link to verify your email account so we can
           keep in touch with you about the upcoming survey.<br/>
-          <a href=${validationUrl}>${validationUrl}</a>
-          <br/>Thank you!<br/> The National LGBTQ Taskforce & Trans Lifeline.
+          <a href=${validationUrl}>${validationUrl}</a><br/><br/>
+          Thank you!<br/> The National LGBTQ Taskforce & Trans Lifeline.
         `
       }, function(err, json) {
         if (err) { return console.error(err); }
