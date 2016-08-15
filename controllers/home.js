@@ -77,7 +77,8 @@ function sendEmail(validationUrl, email) {
           Thank you for your interest in the Trans Mental Health Survey!
           Please click on the following link to verify your email account so we can
           keep in touch with you about the upcoming survey.<br/>
-          <a href=${validationUrl}>${validationUrl}</a><br/><br/>
+          <a href=${validationUrl}>${validationUrl}</a><br/>
+          This link will expire in one hour<br/><br/>
           Thank you!<br/> The National LGBTQ Taskforce & Trans Lifeline.
         `
       }, function(err, json) {
