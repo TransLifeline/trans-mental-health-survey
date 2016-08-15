@@ -10,7 +10,7 @@ function controller(app) {
   mc.lists.list(function(data) {
     let lists = data.data;
     let surveyList = lists.find(function(list) {
-      return list.name === 'Mental Health Survey List'
+      return list.name === 'Trans Mental Health Survey List'
     });
     if (!surveyList) {
       console.log('List not found.');
