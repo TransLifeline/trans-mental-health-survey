@@ -11,11 +11,12 @@ function home($) {
     var email = $('#email').val();
     var first = $('#first').val();
     var last = $('#last').val();
+    var zip = $('#zip').val();
     if(email) {
       $.ajax({
         type: 'POST',
         url: '/subscribe',
-        data: { email: email, first: first, last: last },
+        data: { email: email, first: first, last: last, zip: zip },
         success: function() {
           console.log('success');
           $('#validate').show();

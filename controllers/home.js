@@ -42,6 +42,9 @@ function controller(app) {
     if(req.body.last) {
       merge['LNAME'] = req.body.last;
     }
+    if (req.body.zip) {
+      merge['ZIPCODE'] = req.body.zip;
+    }
     if(mc) {
       mc.lists.subscribe({id: listId, email:{email: email}, merge_vars: merge}, function() {
         res.status(200).end();
