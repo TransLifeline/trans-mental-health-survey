@@ -41,7 +41,9 @@ h2 {
       @include push(1);
 
       img {
-        @include push(1);
+        width: 610px;
+        display: block;
+        margin: 0 auto;
       }
     }
   }
